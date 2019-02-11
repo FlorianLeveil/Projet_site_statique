@@ -1,4 +1,4 @@
-import markdown
+# import markdown
 import markdown2
 import codecs
 import argparse
@@ -21,7 +21,7 @@ if argument.input != None:
     insideMD = give + "/"
 
 else:
-    insideMD = "./Mardown/"
+    insideMD = "./Markdown/"
     pass
 
 if argument.output != None:
@@ -35,13 +35,13 @@ def convert_MD_to_HTML(insideMD, le_sorted, page):
     action = False
 
     # Vérification qu'il y est bien un fichier à convertir et qu'il soit de la bonne syntax
-    if insideMD != None and insideMD = "./Mardown/Mardown_1.md":
-        fich = insideMD + "Mardown_1.md"
+    if insideMD != None and insideMD != "./Markdown/Mardown_1.md":
+        fich = insideMD + "Markdown_1.md"
     else:
         pass
 
     if page > 1:
-        fich = "./Mardown/" + le_sorted[page-1]
+        fich = "./Markdown/" + le_sorted[page-1]
     
     #Création du fichier new_md vide
     new_md = codecs.open(fich, mode='r', encoding="UTF-8")
@@ -88,7 +88,7 @@ def creat_CSS():
 
     fichier = open("./Site_Statique/Cstyle.css", "w")
     fichier = open("./Site_Statique/style.css", "a")
-    css = codecs.open("./template/style.css" mode="r", encoding="UTF-8")
+    css = codecs.open("./template/style.css", mode="r", encoding="UTF-8")
     txtcss = css.read()
 
     fichier.write(txtcss)
@@ -98,7 +98,7 @@ def GODFUCTION(insideMD, insideSITE, le_sorted, compteurMD):
     while page != compteurMD:
         convert_MD_to_HTML(insideMD,le_sorted,page)
         creat_HTML(insideSITE,page)
-        page ++
+        page += page
     creat_CSS()
 
 le_sorted = sorted(Path(insideMD).glob('*.md'))
