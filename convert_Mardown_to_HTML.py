@@ -19,8 +19,7 @@ def convert_MD_to_HTML(insideMD, le_sorted, page):
 
     if page > 1:
         fich = "./Markdown/" + le_sorted[page-1].name
-    
-    print(fich)
+
     #Création du fichier new_md vide
     new_md = codecs.open(fich, mode='r', encoding="UTF-8")
     text = new_md.read()
@@ -59,20 +58,21 @@ def creat_CSS():
 def DUTCH():
     fichiergo = open("./Site_Statique/indexall.html", "w")
     fichiergo = open("./Site_Statique/indexall.html", "w")
-    fichierall = codecs.open("./Site_Statique/index.html", mode="r", encoding="UTF-8")
+    fichierall = codecs.open("./template/set.html", mode="r", encoding="UTF-8")
     fichieridk = fichierall.read()
-
-    fichieridk.replace("qu", "k")
-    fichierall.replace("ce", "ze")
-    fichierall.replace("ç", "z")
-    fichierall.replace("gu", "ch")
-    fichierall.replace("g", "ch")
-    fichierall.replace("j", "k")
-    fichierall.replace("v", "f")
-
-    fichiergo.write(fichierall)
-
     
+    IDK = fichieridk.replace("Ce","Ze").replace("qu","k").replace("ç", "z").replace("j", "k").replace("v", "f").replace("gu", "ch").replace("ce","ze")
+   
+    first_html = codecs.open("./template/first_html.html", mode="r", encoding="UTF-8")
+    firsthtml = first_html.read()
+
+    troihtml = codecs.open("./template/3_html.html", mode="r", encoding="UTF-8")
+    troishtml = troihtml.read()
+
+    fichiergo.write(firsthtml)
+    fichiergo.write(IDK)
+    fichiergo.write(troishtml)
+
 
 # Fonction qui fusione les 2 fichiers HTML Template + le nouveau Body
 def creat_HTML(insideSITE, page):
@@ -105,15 +105,16 @@ def creat_HTML(insideSITE, page):
     troishtml = troihtml.read()
     fichier.write(troishtml)
 
+
 #LA GODFUNCTION sert à utiliser les trois autres fonction + boucle while si on à plusieur fichiers
 def GODFUCTION(insideMD, insideSITE, le_sorted, compteurMD):
     page = 1
     while page != compteurMD+1:
         convert_MD_to_HTML(insideMD,le_sorted,page)
         creat_HTML(insideSITE,page)
-        page += page
+        page += 1
     creat_CSS()
-    #DUTCH()
+    DUTCH()
     print('Conversion successful!')
 
 
@@ -142,14 +143,3 @@ else:
 le_sorted = sorted(Path(insideMD).glob('*.md'))
 compteurMD = len(le_sorted)
 GODFUCTION(insideMD,insideSITE,le_sorted,compteurMD)
-
-
-
-
-
-
-
-
-
-
-
