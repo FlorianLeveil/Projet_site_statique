@@ -38,13 +38,14 @@ def convert_MD_to_HTML(insideMD, le_sorted, page):
     # Boucle permetant de mettre les tabulation
     for l in fichier:
         if action == False:
-            fichier_set.write('\t\t')
+            fichier_set.write('\t')
             action = True
         fichier_set.write(l.replace('\n', '\n\t\t'))
     
     fichier.close()
 
 
+#Fonction qui écrit le CSS
 def creat_CSS():
 
     fichier = open("./Site_Statique/style.css", "w")
@@ -55,6 +56,7 @@ def creat_CSS():
     fichier.write(thecss)
 
 
+#Fonction qui inverse les lettres
 def DUTCH():
     fichiergo = open("./Site_Statique/indexall.html", "w")
     fichiergo = open("./Site_Statique/indexall.html", "w")
