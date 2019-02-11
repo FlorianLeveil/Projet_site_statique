@@ -11,8 +11,8 @@ give = argparse.ArgumentParser()
 
 give.add_argument("-i", "--input-directory", type = str, help = "Chemin du dossier de fichiers source (contenant les fichiers markdown)")
 give.add_argument("-o", "--output-directory", type = str, help = "Chemin du dossier où seront mis les fichiers générés pour le site statique")
-give.add_argument("-t", "--template-directory", type = str, help = "Dossier contenant des modèles de pages web à compléter")
-give.add_argument("-h", "--help", type = str, help = " afficher de l'aide pour exliquer les paramètres de la commande ")
+give.add_argument("-t", "--title", type = str, help = "Mettre un titre sur le fichier HTML")
+
 
 argument = give.parse_args()
 
@@ -68,32 +68,27 @@ def convert_MD_to_HTML(insideMD, le_sorted, page):
 def creat_HTML(insideMD, page):
     compteur = str(page)
 
-    if insideSITE != None and insideSITE != "./Site_Statique/HTML/index.html":
-        site = insideSITE + "/HTML/index.html"
+    if insideSITE != None and insideSITE != "./Site_Statique/index.html":
+        site = insideSITE + "./index.html"
     else:
         pass
     
     if page > 1:
-        site = "./Site_Statique/HTML/page" + compteur + ".html"
+        site = "./Site_Statique/page" + compteur + ".html"
     
     fichier = open(site, "w")
     fichier = open(site, "a")
 
-    head_html = codecs.open("./template/head_html.txt", mode="r", encoding="UTF-8")
-    txt_head_html = head_html.read()
+    html = codecs.open("./template/index.html", mode="r", encoding="UTF-8")
+    lehtml = html.read()
 
-    body_html = codecs.open("./template/body_html.html", mode="r", encoding="UTF-8")
-    html_body_html = body_html.read()
-
-    fichier.write(txt_head_html)
-    fichier.write(html_body_html)
+    fichier.write(lehtml)
 
 def creat_CSS():
 
-    fichier = open("./Sit_Statique/CSS/style.css", "w")
-    fichier = open("./Sit_Statique/CSS/style.css", "a")
-
-    css = codecs.open("./template/style.txt" mode="r", encoding="UTF-8")
+    fichier = open("./Site_Statique/Cstyle.css", "w")
+    fichier = open("./Site_Statique/style.css", "a")
+    css = codecs.open("./template/style.css" mode="r", encoding="UTF-8")
     txtcss = css.read()
 
     fichier.write(txtcss)
