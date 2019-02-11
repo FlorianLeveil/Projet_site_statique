@@ -7,31 +7,6 @@ import random
 from pathlib import Path
 
 
-
-# Création des commandes
-give = argparse.ArgumentParser()
-
-give.add_argument("-i","--input", "--input-directory", type = str, help = "Chemin du dossier de fichiers source (contenant les fichiers markdown)")
-give.add_argument("-o","--output", "--output-directory", type = str, help = "Chemin du dossier où seront mis les fichiers générés pour le site statique")
-
-# A faire
-give.add_argument("-t", "--title", type = str, help = "Mettre un titre sur le fichier HTML")
-argument1 = give.parse_args()
-
-if argument1.input != None:
-    insideMD = argument1.input
-    insideMD = insideMD + "/"
-else:
-    insideMD = "./Markdown/"
-    pass
-
-if argument1.output != None:
-    insideSITE = argument1.output
-else:
-    insideSITE = "./Site_Statique/"
-    pass
-
-
 #Fonction qui convertie le Markdown en HTML
 def convert_MD_to_HTML(insideMD, le_sorted, page):
     action = False
@@ -141,6 +116,27 @@ def GODFUCTION(insideMD, insideSITE, le_sorted, compteurMD):
     #DUTCH()
     print('Conversion successful!')
 
+
+# Création des commandes
+give = argparse.ArgumentParser()
+give.add_argument("-i","--input", "--input-directory", type = str, help = "Chemin du dossier de fichiers source (contenant les fichiers markdown)")
+give.add_argument("-o","--output", "--output-directory", type = str, help = "Chemin du dossier où seront mis les fichiers générés pour le site statique")
+# A faire
+give.add_argument("-t", "--title", type = str, help = "Mettre un titre sur le fichier HTML")
+argument1 = give.parse_args()
+
+if argument1.input != None:
+    insideMD = argument1.input
+    insideMD = insideMD + "/"
+else:
+    insideMD = "./Markdown/"
+    pass
+
+if argument1.output != None:
+    insideSITE = argument1.output
+else:
+    insideSITE = "./Site_Statique/"
+    pass
 
 
 le_sorted = sorted(Path(insideMD).glob('*.md'))
