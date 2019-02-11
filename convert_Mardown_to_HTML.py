@@ -6,8 +6,7 @@ import argparse
 import random
 from pathlib import Path
 
-le_sorted = sorted(Path(insideMD).glob('*.md'))
-compteurMD = len(le_sorted)
+
 
 # Création des commandes
 give = argparse.ArgumentParser()
@@ -31,6 +30,7 @@ if argument1.output != None:
 else:
     insideSITE = "./Site_Statique/"
     pass
+
 
 #Fonction qui convertie le Markdown en HTML
 def convert_MD_to_HTML(insideMD, le_sorted, page):
@@ -100,7 +100,7 @@ def DUTCH():
     
 
 # Fonction qui fusione les 2 fichiers HTML Template + le nouveau Body
-def creat_HTML(insideSITE, page)
+def creat_HTML(insideSITE, page):
     compteur = str(page)
 
 
@@ -138,10 +138,13 @@ def GODFUCTION(insideMD, insideSITE, le_sorted, compteurMD):
         creat_HTML(insideSITE,page)
         page += page
     creat_CSS()
-    DUTCH()
+    #DUTCH()
     print('Conversion successful!')
 
 
+
+le_sorted = sorted(Path(insideMD).glob('*.md'))
+compteurMD = len(le_sorted)
 GODFUCTION(insideMD,insideSITE,le_sorted,compteurMD)
 
 
