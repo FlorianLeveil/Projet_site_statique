@@ -14,18 +14,18 @@ give.add_argument("-o", "--output-directory", type = str, help = "Chemin du doss
 give.add_argument("-t", "--title", type = str, help = "Mettre un titre sur le fichier HTML")
 
 
-argument = give.parse_args()
+argument1 = give.parse_args()
 
-if argument.input != None:
-    insideMD = argument.input
+if argument1.input != None:
+    insideMD = argument1.input
     insideMD = give + "/"
 
 else:
     insideMD = "./Markdown/"
     pass
 
-if argument.output != None:
-    insideSITE = argument.output
+if argument1.output != None:
+    insideSITE = argument1.output
 
 else:
     insideSITE = "./Site_Statique/"
