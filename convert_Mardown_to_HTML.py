@@ -18,7 +18,7 @@ def convert_MD_to_HTML(insideMD, le_sorted, page):
         pass
 
     if page > 1:
-        fich = "./Markdown/" + le_sorted[page-1].name
+        fich = "./Markdown_/" + le_sorted[page-1].name
 
     #Création du fichier new_md vide
     new_md = codecs.open(fich, mode='r', encoding="UTF-8")
@@ -122,7 +122,6 @@ def GODFUCTION(insideMD, insideSITE, le_sorted, compteurMD):
 give = argparse.ArgumentParser()
 give.add_argument("-i","--input", "--input-directory", type = str, help = "Chemin du dossier de fichiers source (contenant les fichiers markdown)")
 give.add_argument("-o","--output", "--output-directory", type = str, help = "Chemin du dossier où seront mis les fichiers générés pour le site statique")
-# A faire
 give.add_argument("-t", "--title", type = str, help = "Mettre un titre sur le fichier HTML")
 argument1 = give.parse_args()
 
@@ -142,4 +141,5 @@ else:
 
 le_sorted = sorted(Path(insideMD).glob('*.md'))
 compteurMD = len(le_sorted)
+
 GODFUCTION(insideMD,insideSITE,le_sorted,compteurMD)
